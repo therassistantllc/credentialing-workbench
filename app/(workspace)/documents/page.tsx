@@ -1,0 +1,6 @@
+import { DocumentTable } from '@/components/documents/document-table';
+import { UploadDrawer } from '@/components/documents/upload-drawer';
+import { getDocuments } from '@/lib/queries/documents';
+import { getProviders } from '@/lib/queries/providers';
+import { createSignedDocumentUrl } from '@/lib/supabase/storage';
+export default async function DocumentsPage({searchParams}:{searchParams:Promise<{upload?:string;provider?:string}>}){const params=await searchParams;const [documents,providers]=await Promise.all([getDocuments(),getProviders()]);const view=await Promise.all(documents.map(async d=>({id:d.id,providerId:d.providerId,providerName:d.providerName,documentType:d.documentType,uploadedAt:d.uploadedAt,signedUrl:await createSignedDocumentUrl(d.storagePath)})));return <div className="space-y-4"><div className="flex flex-wrap items-end justify-between gap-3"><div><h1 className="text-2xl font-semibold">Documents</h1><p className="mt-1 text-sm text-[var(--text-muted)]">Private credentialing files with short-lived signed access.</p></div><a href="/documents?upload=1" data-drawer-trigger className="rounded-md bg-[var(--brand)] px-3 py-2 text-sm font-semibold text-white">Upload document</a></div>{params.upload==='1'?<UploadDrawer providers={providers} providerId={params.provider}/>:null}<DocumentTable documents={view}/></div>}
