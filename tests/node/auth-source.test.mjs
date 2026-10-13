@@ -7,10 +7,12 @@ test('auth source uses app_metadata roles and server-only admin credentials', as
   const guard = await readFile(new URL('../../lib/auth/require-role.ts', import.meta.url), 'utf8');
   const admin = await readFile(new URL('../../lib/supabase/admin.ts', import.meta.url), 'utf8');
   const proxy = await readFile(new URL('../../proxy.ts', import.meta.url), 'utf8');
+  const sessionProxy = await readFile(new URL('../../lib/supabase/proxy.ts', import.meta.url), 'utf8');
   assert.match(roles, /credentialing_specialist/);
   assert.match(guard, /app_metadata/);
   assert.doesNotMatch(guard, /user_metadata/);
   assert.match(admin, /server-only/);
   assert.match(admin, /SUPABASE_SECRET_KEY/);
   assert.match(proxy, /export async function proxy/);
+  assert.match(sessionProxy, /if \(!url \|\| !key\) return \{ response, user: null \};/);
 });
