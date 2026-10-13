@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { refreshSupabaseSession } from '@/lib/supabase/proxy';
 
-const PUBLIC_PATHS = ['/login'];
+const PUBLIC_PATHS = ['/login', '/setup-admin'];
 
 export async function proxy(request: NextRequest) {
   const { response, user } = await refreshSupabaseSession(request);
