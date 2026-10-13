@@ -5,7 +5,7 @@ export async function refreshSupabaseSession(request: NextRequest) {
   let response = NextResponse.next({ request });
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-  if (!url || !key) return response;
+  if (!url || !key) return { response, user: null };
 
   const supabase = createServerClient(url, key, {
     cookies: {
