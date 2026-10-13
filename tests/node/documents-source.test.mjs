@@ -13,6 +13,9 @@ test('document UI requires provider/type/file and renders signed access rather t
   assert.match(validation,/image\/jpeg/);
   assert.match(actions,/provider\//);
   assert.match(actions,/randomUUID/);
+  const uploadAction=actions.slice(actions.indexOf('export async function uploadDocument'),actions.indexOf('export async function deleteDocument'));
+  assert.match(uploadAction,/export async function uploadDocument\(formData:FormData\):Promise<void>/);
+  assert.doesNotMatch(uploadAction,/return\{ok:/);
   assert.match(actions,/remove/);
   assert.match(storage,/createSignedUrl/);
   assert.doesNotMatch(table,/storagePath/);
