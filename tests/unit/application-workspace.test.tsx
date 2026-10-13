@@ -1,0 +1,1 @@
+import{readFile}from'node:fs/promises';import{expect,it}from'vitest';it('supports unlinked service agreements',async()=>{const s=await readFile('components/applications/application-detail.tsx','utf8');expect(s).toContain('No service agreement linked');for(const x of ['Enrollment Type','EFT','ERA','Recredentialing'])expect(s).toContain(x);});

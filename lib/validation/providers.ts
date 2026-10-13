@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const providerUpdateSchema=z.object({id:z.string().uuid(),first_name:z.string().min(1),last_name:z.string().min(1),degree_suffix:z.string().optional(),exact_credentials:z.string().optional(),email:z.string().email().optional().or(z.literal('')),phone:z.string().optional(),npi_number:z.string().regex(/^\d{10}$/).optional().or(z.literal('')),caqh_id:z.string().optional(),specialties:z.array(z.string()).optional(),notes:z.string().optional()});

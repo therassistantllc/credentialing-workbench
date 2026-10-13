@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import { readFile } from 'node:fs/promises';
+test('dashboard exposes seven actionable KPI links',async()=>{const src=await readFile(new URL('../../components/dashboard/kpi-strip.tsx',import.meta.url),'utf8');for(const label of ['Active Providers','Applications In Progress','Waiting on Payer','Recredentialing Due','Credentials Expiring','CAQH Attestations Due','Open Tasks'])assert.match(src,new RegExp(label));assert.match(src,/\/tasks\?status=open/);assert.match(src,/\/applications\?status=waiting/);});

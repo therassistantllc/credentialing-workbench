@@ -1,0 +1,2 @@
+'use client';
+export function DataError({onRetry}:{onRetry:()=>void}){return <section role="alert" className="mx-auto mt-12 max-w-xl rounded-lg border border-[var(--critical-text)] bg-[var(--surface)] p-6"><h1 className="text-xl font-semibold">Unable to load credentialing data</h1><p className="mt-2 text-sm text-[var(--text-muted)]">The request could not be completed. No changes were made.</p><button type="button" onClick={onRetry} className="mt-4 rounded-md bg-[var(--brand)] px-3 py-2 text-sm font-semibold text-white">Try again</button></section>}

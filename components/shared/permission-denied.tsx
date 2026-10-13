@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export function PermissionDenied(){return <section role="alert" className="mx-auto mt-12 max-w-xl rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6"><h1 className="text-xl font-semibold">Permission denied</h1><p className="mt-2 text-sm text-[var(--text-muted)]">Your account does not have a recognized Credentialing Workbench role. Ask an administrator to assign access.</p><Link href="/login" className="mt-4 inline-flex rounded-md border border-[var(--border)] px-3 py-2 text-sm font-semibold">Return to sign in</Link></section>}

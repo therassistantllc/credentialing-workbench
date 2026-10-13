@@ -1,0 +1,3 @@
+import { classifyDeadline, daysBetweenDateOnly, todayDateOnly } from '@/lib/dates/deadlines';
+import { StatusBadge } from '@/components/shared/status-badge';
+export function DeadlineLabel({date,label='Expiration'}:{date?:string|null;label?:string}){if(!date)return <span className="text-[var(--text-muted)]">{label}: Not set</span>;const today=todayDateOnly();const days=daysBetweenDateOnly(date,today);const state=classifyDeadline(date,today);const status=state==='overdue'?'Expired':state==='critical'?'Critical':state==='warning'?'Warning':state==='upcoming'?'Upcoming':'Active';return <span className="inline-flex flex-wrap items-center gap-2">{label}: {date} · {days<0?`${Math.abs(days)} days overdue`:`${days} days`} <StatusBadge status={status}/></span>}

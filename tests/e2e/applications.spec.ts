@@ -1,0 +1,1 @@
+import{test,expect}from'@playwright/test';test.skip(!process.env.E2E_AUTH_STORAGE,'requires authenticated storage state');test('application queue renders without requiring service agreement',async({page})=>{await page.goto('/applications');await expect(page.getByRole('heading',{name:'Applications'})).toBeVisible();});

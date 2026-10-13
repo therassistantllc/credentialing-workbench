@@ -1,0 +1,2 @@
+import { render,screen } from '@testing-library/react';import { KpiStrip } from '@/components/dashboard/kpi-strip';
+it('renders seven KPI labels',()=>{render(<KpiStrip kpis={{activeProviders:1,applicationsInProgress:2,waitingOnPayer:3,recredentialingDue:4,credentialsExpiring:5,caqhAttestationsDue:6,openTasks:7}}/>);for(const x of ['Active Providers','Applications In Progress','Waiting on Payer','Recredentialing Due','Credentials Expiring','CAQH Attestations Due','Open Tasks'])expect(screen.getByText(x)).toBeInTheDocument();});
