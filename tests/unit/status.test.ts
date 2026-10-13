@@ -1,0 +1,2 @@
+import { describe,expect,it } from 'vitest';import { statusTone } from '@/lib/status/status';
+describe('status tone',()=>{it('maps operational states without changing stored values',()=>{expect(statusTone('Draft')).toBe('neutral');expect(statusTone('Submitted')).toBe('informational');expect(statusTone('Recredentialing Due')).toBe('warning');expect(statusTone('Expired')).toBe('critical');expect(statusTone('Approved')).toBe('success');});});

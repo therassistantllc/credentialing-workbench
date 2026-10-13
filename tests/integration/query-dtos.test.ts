@@ -1,0 +1,2 @@
+import { readFile } from 'node:fs/promises';import { describe,expect,it } from 'vitest';
+describe('query DTO source contract',()=>{it('never selects plaintext secrets or unrestricted provider rows',async()=>{const src=await readFile('lib/queries/providers.ts','utf8');expect(src).not.toContain('caqh_password');expect(src).not.toContain("select('*')");expect(src).toContain('service_agreement_id');expect(src).toContain('??[]');});});

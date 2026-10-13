@@ -1,0 +1,3 @@
+import { test,expect } from '@playwright/test';
+test('workspace protects content and exposes visible keyboard focus',async({page})=>{await page.goto('/dashboard');if(page.url().includes('/login')){await expect(page.locator('main')).toBeVisible();return;}await page.keyboard.press('Tab');await expect(page.locator(':focus-visible')).toBeVisible();});
+test('mobile workspace provides navigation without desktop sidebar',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto('/tasks');if(!page.url().includes('/login'))await expect(page.getByRole('navigation',{name:'Mobile primary'})).toBeVisible();});

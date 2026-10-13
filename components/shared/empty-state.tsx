@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export function EmptyState({title,description,actionLabel,href}:{title:string;description:string;actionLabel?:string;href?:string}){return <div className="rounded-lg border border-dashed border-[var(--border)] bg-[var(--surface)] p-6 text-center"><h3 className="font-semibold">{title}</h3><p className="mt-1 text-sm text-[var(--text-muted)]">{description}</p>{actionLabel&&href?<Link href={href} className="mt-4 inline-flex rounded-md bg-[var(--brand)] px-3 py-2 text-sm font-semibold text-white">{actionLabel}</Link>:null}</div>}

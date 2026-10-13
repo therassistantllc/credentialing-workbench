@@ -1,0 +1,21 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+export type ProviderRow = {
+  id: string; first_name: string; last_name: string; degree_suffix: string | null; exact_credentials: string | null;
+  email: string | null; phone: string | null; npi_number: string | null; caqh_id: string | null; caqh_username: string | null;
+  caqh_last_attestation_date: string | null; caqh_next_attestation_date: string | null; medicare_opt_out: boolean | null;
+  medicare_opt_out_effective_date: string | null; medicare_opt_out_renewal_date: string | null; mfa_routing_note: string | null;
+  specialties: string[] | null; notes: string | null; created_at: string | null; updated_at: string | null;
+};
+export type PayerRow = { id: string; name: string; electronic_payer_id: string | null; credentialing_portal_url: string | null; phone_number: string | null; fax_number: string | null; submission_email: string | null; mailing_address: string | null; notes: string | null; created_at: string | null };
+export type PayerApplicationRow = { id: string; provider_id: string; payer_id: string; service_agreement_id: string | null; status: string | null; enrollment_type: string | null; submission_date: string | null; effective_date: string | null; recred_due_date: string | null; eft_enrollment_status: string | null; era_enrollment_status: string | null; clearinghouse_provider_id: string | null; notes: string | null; created_at: string | null; updated_at: string | null };
+export type TaskRow = { id: string; provider_id: string; payer_application_id: string | null; description: string; due_date: string | null; is_completed: boolean | null; created_at: string | null };
+export type LicenseRow = { id: string; provider_id: string; license_type: string; license_number: string; state: string; expiration_date: string; status: string | null; created_at: string | null };
+export type MalpracticeRow = { id: number; provider_id: string; carrier: string; policy_number: string; effective_date: string; expiration_date: string; created_at: string };
+export type DeaRow = { id: string; provider_id: string; dea_number: string | null; dea_expiration_date: string | null; state_csr_number: string | null; state_csr_expiration_date: string | null; created_at: string | null };
+export type SanctionRow = { id: string; provider_id: string; check_type: string; checked_at: string; status: string | null; report_reference_number: string | null; created_at: string | null };
+export type EmploymentRow = { id: string; provider_id: string; employer_name: string | null; position_title: string | null; start_date: string; end_date: string | null; is_work_gap: boolean | null; gap_explanation: string | null; created_at: string | null };
+export type DocumentRow = { id: string; provider_id: string; document_type: string; storage_path: string; uploaded_at: string | null };
+export type ProposalRow = { id: string; provider_id: string; status: string | null; proposed_fee: number | null; scope_of_work: Json | null; sent_date: string | null; expiration_date: string | null; storage_path: string | null; notes: string | null; created_at: string | null; updated_at: string | null };
+export type ServiceAgreementRow = { id: string; provider_id: string; proposal_id: string | null; agreement_status: string | null; pricing_model: string | null; fee_amount: number | null; scope_of_work: string[] | null; signed_date: string | null; effective_date: string | null; expiration_date: string | null; storage_path: string | null; notes: string | null; created_at: string | null; updated_at: string | null };
+export type ContractRow = { id: string; provider_id: string; payer_application_id: string | null; contract_name: string; contract_status: string | null; signed_date: string | null; effective_date: string | null; termination_date: string | null; fee_schedule_details: string | null; storage_path: string | null; notes: string | null; created_at: string | null };
+export type LocationRow = { id: string; name: string; address_line1: string | null; address_line2: string | null; city: string | null; state: string | null; zip_code: string | null; phone: string | null; fax: string | null; created_at: string | null };

@@ -1,0 +1,3 @@
+import Link from 'next/link';
+const tabs=[['Overview','overview'],['Payer Credentialing','payer-credentialing'],['Credentials','credentials'],['Locations','locations'],['Documents','documents'],['Contracts','contracts'],['Activity','activity']] as const;
+export function ProviderTabs({active='overview'}:{active?:string}){return <nav aria-label="Provider sections" className="flex gap-1 overflow-x-auto border-b border-[var(--border)]">{tabs.map(([label,key])=><Link key={key} href={`?tab=${key}`} className={`whitespace-nowrap border-b-2 px-3 py-2 text-sm font-medium ${active===key?'border-[var(--brand)] text-[var(--brand)]':'border-transparent text-[var(--text-muted)]'}`}>{label}</Link>)}</nav>}
