@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "vitest run",
+    "test": "npm run test:unit && npm run test:source",
+    "test:unit": "vitest run",
+    "test:source": "node --test tests/node/*.mjs",
     "test:e2e": "playwright test",
     "verify:phase1": "node --experimental-strip-types scripts/phase1-verification.ts",
     "bootstrap:admin": "tsx scripts/bootstrap-admin.ts"
