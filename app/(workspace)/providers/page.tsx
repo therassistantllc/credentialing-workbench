@@ -26,7 +26,7 @@ export default async function ProvidersPage({searchParams}:{searchParams:Promise
   const payers=[...new Set(all.flatMap(p=>p.payerNames))].sort();
   const missing=[...new Set(all.flatMap(p=>p.missingCredentials))].sort();
   return <div className="space-y-4">
-    <div className="flex flex-wrap items-end justify-between gap-3"><div><h1 className="text-2xl font-semibold">Providers</h1><p className="mt-1 text-sm text-[var(--text-muted)]">Credentialing readiness and payer enrollment by provider.</p></div><a href="/providers?new=1" className="rounded-md bg-[var(--brand)] px-3 py-2 text-sm font-semibold text-white">Add provider</a></div>
+    <div className="flex flex-wrap items-end justify-between gap-3"><div><h1 className="text-2xl font-semibold">Providers</h1><p className="mt-1 text-sm text-[var(--text-muted)]">Credentialing readiness and payer enrollment by provider.</p></div><a href="/providers?new=1" data-drawer-trigger className="rounded-md bg-[var(--brand)] px-3 py-2 text-sm font-semibold text-white">Add client</a></div>
     <form className="grid gap-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 md:grid-cols-4 xl:grid-cols-8">
       <label className="text-xs font-semibold">Search<input name="q" defaultValue={params.q} placeholder="Name, NPI, CAQH, specialty" className="mt-1 w-full rounded-md border border-[var(--border)] px-3 py-2 text-sm"/></label>
       <label className="text-xs font-semibold">Credential type<select name="credential" defaultValue={params.credential??'All'} className="mt-1 w-full rounded-md border border-[var(--border)] px-3 py-2"><option>All</option><option>License</option><option>Malpractice</option><option>DEA / CSR</option><option>CAQH</option></select></label>
@@ -39,6 +39,6 @@ export default async function ProvidersPage({searchParams}:{searchParams:Promise
       <div className="flex items-end md:col-span-4 xl:col-span-8"><button className="rounded-md border border-[var(--border)] px-4 py-2 text-sm font-semibold">Apply filters</button><a href="/providers" className="ml-2 px-3 py-2 text-sm text-[var(--text-muted)]">Clear</a></div>
     </form>
     <ProviderTable providers={providers}/>
-    {params.new==='1'?<ProviderEditDrawer closeHref="/providers"/>:null}
+    {params.new==='1'?<ProviderEditDrawer closeHref="/providers" error={params.error}/>:null}
   </div>;
 }
