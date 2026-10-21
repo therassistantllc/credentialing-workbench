@@ -28,7 +28,7 @@ export async function createConsultingRequest(formData: FormData): Promise<void>
   const v=parsed.data;
   const quote=calculateConsultingQuote({
     claimCount:v.claimCount, related:v.related==='yes',issueType:v.issueType,
-    packageKey:v.claimCount>10 ? v.packageKey : ''
+    packageKey:v.packageKey
   });
   if (!quote || quote.tier==='package_selection_required') redirect('/requests/new?error=package');
   const supabase=await createServerSupabaseClient();
